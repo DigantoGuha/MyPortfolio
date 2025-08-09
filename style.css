@@ -1,0 +1,79 @@
+:root{
+  --bg1:#0f1724; --bg2:#0b1220; --accent1:#7c3aed; --accent2:#06b6d4;
+  --glass: rgba(255,255,255,0.04);
+  --card: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.06);
+  --maxw:1100px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:linear-gradient(120deg,var(--bg1),#071025);color:#e6eef6}
+.container{max-width:var(--maxw);margin:0 auto;padding:2rem}
+
+/* NAV */
+.nav-wrap{position:fixed;left:0;right:0;top:0;backdrop-filter: blur(6px);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0.6rem 1rem}
+.logo{font-weight:700;color:white;text-decoration:none}
+.nav-links{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;padding:0.4rem;border-radius:6px}
+.nav-links a:hover{background:var(--glass);}
+
+/* Buttons */
+.btn{padding:0.5rem 0.9rem;border-radius:10px;border:1px solid transparent;text-decoration:none;cursor:pointer;font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 30px rgba(12,12,18,0.6)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#dbeafe}
+
+/* Hero */
+.hero{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:4.5rem}
+.hero-inner{display:flex;gap:2rem;align-items:center}
+.hero-left{flex:1}
+.hero-right{width:320px}
+h1{font-size:2rem;margin:0 0 0.5rem;color:#fff}
+.typewriter{color:#cfe9ff;font-size:1.15rem;margin:0 0 1rem;min-height:1.3em}
+.hero p{color:rgba(255,255,255,0.8);max-width:54ch}
+
+/* Card */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);padding:1rem;border-radius:12px;backdrop-filter: blur(6px)}
+.card h3{margin:0 0 .5rem}
+
+/* Ornaments */
+.bg-ornaments{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.6}
+.orb-1{width:380px;height:380px;background:linear-gradient(45deg,#5eead4,#60a5fa);left:-10%;top:-10%;transform:translateZ(0);animation:float 8s ease-in-out infinite}
+.orb-2{width:260px;height:260px;background:linear-gradient(45deg,#7c3aed,#06b6d4);right:-5%;top:15%;animation:float 10s ease-in-out infinite;opacity:0.45}
+.orb-3{width:160px;height:160px;background:linear-gradient(45deg,#fb7185,#f59e0b);left:20%;bottom:-5%;animation:float 7s ease-in-out infinite;opacity:0.35}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(18px)}100%{transform:translateY(0)}}
+
+/* About */
+.about{padding-top:3rem;padding-bottom:3rem}
+.about h2{margin-top:0}
+
+/* Skills */
+.skills{padding-top:3rem;padding-bottom:3rem}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.skill{background:var(--card);padding:1rem;border-radius:10px;border:1px solid var(--glass-border)}
+.skill h4{margin:0 0 .5rem}
+.bar{background:rgba(255,255,255,0.04);height:12px;border-radius:8px;overflow:hidden}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent1),var(--accent2));transition:width 1.2s cubic-bezier(.2,.9,.2,1)}
+
+/* Contact */
+.contact{padding-top:3rem;padding-bottom:4rem}
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:2rem}
+form label{display:block;margin-bottom:1rem;color:rgba(255,255,255,0.9)}
+input,textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#e6eef6}
+.form-actions{display:flex;gap:1rem;align-items:center;margin-top:0.5rem}
+.form-note{margin-top:.6rem;color:#a7f3d0}
+
+/* Footer */
+.site-footer{padding:1.5rem 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem;text-align:center;color:rgba(255,255,255,0.6)}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-inner{flex-direction:column-reverse}
+  .hero-right{width:100%}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav .btn-cv{display:none}
+  .container{padding:1rem}
+}

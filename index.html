@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diganto Guha — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="logo" href="#home">Diganto Guha</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="btn-cv" onclick="location.href='#contact'">Contact</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner container">
+        <div class="hero-left">
+          <h1>Hello, I'm <span class="name">Diganto Guha</span></h1>
+          <h2 class="typewriter" data-text='["Backend Developer.", "Tech Enthusiast.", "Node.js • Java • SQL"]'></h2>
+          <p>I build reliable backend systems and full-stack prototypes. Currently exploring market prediction projects and scalable web apps.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="#skills">My Skills</a>
+            <a class="btn ghost" href="https://github.com/DigantoGuha" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="card">
+            <h3>Quick Info</h3>
+            <ul>
+              <li><strong>Location:</strong> Kolkata, India</li>
+              <li><strong>Email:</strong> <a href="mailto:digantoguha80@gmail.com">digantoguha80@gmail.com</a></li>
+              <li><strong>Graduation:</strong> B.Tech — 2026</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bg-ornaments">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about container">
+      <h2>About Me</h2>
+      <p>I enjoy designing clean backend APIs and integrating them with polished frontends. I have hands-on experience with Node.js, Express, MongoDB, Java, and SQL from coursework and personal projects such as DevMeet and market-prediction prototypes.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills container">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill">
+          <h4>JavaScript</h4>
+          <div class="bar"><div class="fill" data-fill="90"></div></div>
+        </div>
+        <div class="skill">
+          <h4>Node.js</h4>
+          <div class="bar"><div class="fill" data-fill="85"></div></div>
+        </div>
+        <div class="skill">
+          <h4>Java</h4>
+          <div class="bar"><div class="fill" data-fill="80"></div></div>
+        </div>
+        <div class="skill">
+          <h4>SQL</h4>
+          <div class="bar"><div class="fill" data-fill="82"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <form id="contactForm">
+          <label>
+            Name
+            <input type="text" id="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" id="email" required />
+          </label>
+          <label>
+            Message
+            <textarea id="message" rows="5" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Send Message</button>
+            <button type="reset" class="btn ghost">Reset</button>
+          </div>
+          <p class="form-note" id="formNote" aria-live="polite"></p>
+        </form>
+
+        <div class="contact-info">
+          <h3>Get in touch</h3>
+          <p>Email: <a href="mailto:digantoguha80@gmail.com">digantoguha80@gmail.com</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/diganto-guha-352958264" target="_blank" rel="noopener">Diganto Guha</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Diganto Guha — Built with HTML5, CSS3 & JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
