@@ -2,18 +2,27 @@
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-// Preloader
+// Preloader with fallback timeout
+let loaded = false;
+const preloaderTimeout = setTimeout(() => {
+  if (!loaded) hidePreloader();
+}, 4000); // Max 4s wait
+
 window.addEventListener('load', () => {
-  const preloader = $('.preloader');
-  setTimeout(() => {
-    preloader.style.opacity = '0';
-    setTimeout(() => {
-      preloader.style.display = 'none';
-      document.body.style.overflow = '';
-      initAnimations();
-    }, 500);
-  }, 1000); // Minimum 1s display time
+  loaded = true;
+  hidePreloader();
 });
+
+function hidePreloader() {
+  clearTimeout(preloaderTimeout);
+  const preloader = $('.preloader');
+  preloader.style.opacity = '0';
+  setTimeout(() => {
+    preloader.style.display = 'none';
+    document.body.style.overflow = '';
+    initAnimations();
+  }, 500);
+}
 
 // Theme toggle
 function initTheme() {
@@ -49,27 +58,20 @@ function initMobileMenu() {
   });
 }
 
-// Scroll animations
+// Scroll animations with section-based triggers
 function initAnimations() {
-  const animateElements = $$('[data-animate]');
-  
+  const sections = $$('section');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+        entry.target.querySelectorAll('[data-animate]').forEach(el => {
+          el.classList.add('animate');
+        });
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-  
-  animateElements.forEach(el => {
-    const delay = el.getAttribute('data-delay') || '0';
-    el.style.transitionDelay = `${delay}s`;
-    observer.observe(el);
-  });
+  }, { threshold: 0.1 });
+
+  sections.forEach(section => observer.observe(section));
 }
 
 // Smooth scroll
@@ -95,7 +97,7 @@ function initSmoothScroll() {
   });
 }
 
-// Typewriter effect
+// Typewriter effect with sound (optional)
 function initTypewriter() {
   const el = $('.typewriter');
   if (!el) return;
@@ -110,9 +112,18 @@ function initTypewriter() {
   cursor.textContent = '|';
   el.appendChild(cursor);
   
+  // Optional typing sound
+  const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-keyboard-typing-1386.mp3');
+  let soundPlayed = false;
+
   function step() {
     const txt = arr[i];
     if (forward) {
+      if (!soundPlayed) {
+        audio.currentTime = 0;
+        audio.play().catch(e => console.log("Audio play failed:", e));
+        soundPlayed = true;
+      }
       el.insertBefore(document.createTextNode(txt[pos]), cursor);
       pos++;
       if (pos === txt.length) {
@@ -126,6 +137,7 @@ function initTypewriter() {
       if (pos === 0) {
         forward = true;
         i = (i + 1) % arr.length;
+        soundPlayed = false;
       }
     }
     setTimeout(step, forward ? 80 : 30);
@@ -144,9 +156,7 @@ function initSkillBars() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.5
-  });
+  }, { threshold: 0.5 });
   
   fills.forEach(f => observer.observe(f));
 }
