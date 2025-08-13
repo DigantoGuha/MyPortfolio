@@ -1,6 +1,9 @@
 Portfolio Landing Page – HTML5, CSS3 & JavaScript
 Overview
 This is a responsive and visually appealing portfolio landing page built using HTML5, CSS3, and vanilla JavaScript. It showcases frontend development skills through modern UI design, smooth animations, and interactive features.
+You can view the website from : https://fantastic-melomakarona-18988b.netlify.app
+
+
 The project includes:
 
 Hero section with typewriter effect and animated gradient background.
